@@ -1,4 +1,1 @@
-a
-bb
-a
-kl
+select * from table
