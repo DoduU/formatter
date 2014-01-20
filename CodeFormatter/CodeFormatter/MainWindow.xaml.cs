@@ -42,41 +42,61 @@ namespace CodeFormatter
 
         }
 
+        private int Get_keyWord_lastIndex(int index, string keyWord)
+        {
+            return file.IndexOf(keyWord, index) + keyWord.Length;
 
+        }
+
+        private int Get_keyWord_firstIndex(int index, string keyWord) 
+        {
+            return file.IndexOf(keyWord, index);
+        }
+        private TextRange Get_Range_by_Index(int firstIndex, int lastIndex)
+        {
+            TextPointer start_pointer = rtb.Document.ContentStart.GetNextInsertionPosition(LogicalDirection.Forward).GetPositionAtOffset(firstIndex, LogicalDirection.Forward);
+            TextPointer end_pointer = rtb.Document.ContentStart.GetNextInsertionPosition(LogicalDirection.Forward).GetPositionAtOffset(lastIndex + 1, LogicalDirection.Forward);
+            TextRange got = new TextRange(start_pointer, end_pointer);
+            return got;
+        }
+
+        private void Color_Format_keyWord(TextRange got)
+        {
+            got.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Blue);
+            got.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Bold);
+        }
+
+        private void Highlight_keyWord(string keyWord, string script)
+        {
+            TextRange keyWordRange;
+            int firstIndex;
+            int index = 0;
+            int lastIndex;
+            int scriptLength = script.Length;
+            int keyWordLength = keyWord.Length;
+            while (scriptLength >= keyWordLength){
+                if (keyWordLength == 0)
+                    break;
+                firstIndex = Get_keyWord_firstIndex(index, keyWord);
+                lastIndex = Get_keyWord_lastIndex(index, keyWord);
+                if (firstIndex < 0 || lastIndex < 0)
+                    break;
+                keyWordRange = Get_Range_by_Index(firstIndex, lastIndex);
+                Color_Format_keyWord(keyWordRange);
+                scriptLength -= lastIndex + 1;
+                index += lastIndex + 1;
+            }
+
+
+        }
         private void Color_Format_Clauses()
         {
 
-
-            rtb.SelectAll();
-            string script = rtb.Selection.Text;
-            int keyWordLength;
-
-
-            string[] clausesSQL = { "select ", "from" };
+            string[] clausesSQL = {"where"};
                 foreach (string clauseCounter in clausesSQL)
                 {
-                    int scriptLength = script.Length;
-                    keyWordLength = clauseCounter.Length;
-                    int clauseIndexStart = 0;
-                    int clauseIndexEnd = 0;
-                    int index = 0;
-                    if(scriptLength>0 &&keyWordLength>0)
-                        while (clauseIndexStart < scriptLength - keyWordLength)
-                        {
-                            TextPointer start_pointer, end_pointer;
-                            clauseIndexStart = file.IndexOf(clauseCounter, index);
-                            if (clauseIndexStart < 0)
-                                break;
-
-                            clauseIndexEnd = clauseIndexStart + keyWordLength;
-                            start_pointer = rtb.Document.ContentStart.GetNextInsertionPosition(LogicalDirection.Forward).GetPositionAtOffset(clauseIndexStart, LogicalDirection.Forward);
-                            end_pointer = rtb.Document.ContentStart.GetNextInsertionPosition(LogicalDirection.Forward).GetPositionAtOffset(clauseIndexEnd+1, LogicalDirection.Forward);
-                            TextRange got = new TextRange(start_pointer, end_pointer);
-                            got.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Blue);
-                            got.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Bold);
-                            index = clauseIndexEnd + 1;
-                        }
-                }
+                    Highlight_keyWord(clauseCounter, file);            
+                 }
         }
 
         private void btn_apply_click(object sender, RoutedEventArgs e)

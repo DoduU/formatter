@@ -1,1 +1,1 @@
-select * from table
+a select all from table where
