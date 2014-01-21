@@ -1,1 +1,5 @@
-a select all from table where
+declare
+declare
+declare
+a select all from table where dfsd =dsfffsd
+select top * from varname where group by having order by pivot 

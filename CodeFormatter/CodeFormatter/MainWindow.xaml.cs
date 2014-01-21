@@ -16,6 +16,7 @@ using System.IO;
 using Microsoft.Win32;
 using Microsoft.SqlServer.Server;
 
+
 namespace CodeFormatter
 {
     /// <summary>
@@ -38,26 +39,34 @@ namespace CodeFormatter
             rtb.Document.Blocks.Clear();
             rtb.AppendText(file);
 
-
-
         }
 
-        private int Get_keyWord_lastIndex(int index, string keyWord)
+        private void Get_Range_by_index(string search)
         {
-            return file.IndexOf(keyWord, index) + keyWord.Length;
+            for (TextPointer position = rtb.Document.ContentStart;
+                 position != null && position.CompareTo(rtb.Document.ContentEnd) <= 0;
+                 position = position.GetNextContextPosition(LogicalDirection.Forward))
+            {
+                if (position.CompareTo(rtb.Document.ContentEnd) == 0)
+                {
+                    break;
+                }
 
-        }
-
-        private int Get_keyWord_firstIndex(int index, string keyWord) 
-        {
-            return file.IndexOf(keyWord, index);
-        }
-        private TextRange Get_Range_by_Index(int firstIndex, int lastIndex)
-        {
-            TextPointer start_pointer = rtb.Document.ContentStart.GetNextInsertionPosition(LogicalDirection.Forward).GetPositionAtOffset(firstIndex, LogicalDirection.Forward);
-            TextPointer end_pointer = rtb.Document.ContentStart.GetNextInsertionPosition(LogicalDirection.Forward).GetPositionAtOffset(lastIndex + 1, LogicalDirection.Forward);
-            TextRange got = new TextRange(start_pointer, end_pointer);
-            return got;
+                String textRun = position.GetTextInRun(LogicalDirection.Forward);
+                StringComparison stringComparison = StringComparison.CurrentCulture;
+                Int32 indexInRun = textRun.IndexOf(search, stringComparison);
+                if (indexInRun >= 0)
+                {
+                    position = position.GetPositionAtOffset(indexInRun);
+                    if (position != null)
+                    {
+                        TextPointer nextPointer = position.GetPositionAtOffset(search.Length);
+                        TextRange textRange = new TextRange(position, nextPointer);
+                        textRange.Text.ToUpper();
+                        Color_Format_keyWord(textRange);
+                    }
+                }
+            }
         }
 
         private void Color_Format_keyWord(TextRange got)
@@ -66,36 +75,15 @@ namespace CodeFormatter
             got.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Bold);
         }
 
-        private void Highlight_keyWord(string keyWord, string script)
-        {
-            TextRange keyWordRange;
-            int firstIndex;
-            int index = 0;
-            int lastIndex;
-            int scriptLength = script.Length;
-            int keyWordLength = keyWord.Length;
-            while (scriptLength >= keyWordLength){
-                if (keyWordLength == 0)
-                    break;
-                firstIndex = Get_keyWord_firstIndex(index, keyWord);
-                lastIndex = Get_keyWord_lastIndex(index, keyWord);
-                if (firstIndex < 0 || lastIndex < 0)
-                    break;
-                keyWordRange = Get_Range_by_Index(firstIndex, lastIndex);
-                Color_Format_keyWord(keyWordRange);
-                scriptLength -= lastIndex + 1;
-                index += lastIndex + 1;
-            }
-
-
-        }
         private void Color_Format_Clauses()
         {
 
-            string[] clausesSQL = {"where"};
+            string[] clausesSQL = {"declare","FROM", "SELECT", "WHERE", "GROUP BY", "ORDER BY", "TOP", "HAVING"};
                 foreach (string clauseCounter in clausesSQL)
                 {
-                    Highlight_keyWord(clauseCounter, file);            
+                    Formatting_Methods format = new Formatting_Methods();
+                    format.To_Upper_Case(file, clauseCounter);                   
+                    Get_Range_by_index(clauseCounter);
                  }
         }
 
