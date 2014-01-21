@@ -20,17 +20,23 @@ namespace CodeFormatter
         {
             return script.IndexOf(keyWord, index);
         }
-        public void To_Upper_Case(string script, string keyWord)
+        public string To_Upper_Case(string script)
         {
+            string key;
             int startPos = 0;
-            for (int i = 0; i < script.Length; i+=keyWord.Length+1)
+            string[] clausesSQL = { "declare", "FROM", "SELECT", "WHERE", "GROUP BY", "ORDER BY", "TOP", "HAVING" };
+            foreach (string keyWord in clausesSQL)
             {
-                startPos = script.IndexOf(keyWord.ToLower(), i);
-                if (startPos < 0) 
-                    break;
-                script.Replace(script.Substring(startPos,keyWord.Length-1), keyWord.ToUpper());
-               
+                for (int i = 0; i < script.Length; i += keyWord.Length + 1)
+                {
+                    startPos = script.IndexOf(keyWord.ToLower(), i);
+                    if (startPos < 0)
+                        break;
+                    key = keyWord.ToUpper();
+                    script = script.Replace(script.Substring(startPos, keyWord.Length), key);
+                }
             }
+            return script;
 
 
         }
