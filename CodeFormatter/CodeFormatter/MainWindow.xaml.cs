@@ -45,11 +45,22 @@ namespace CodeFormatter
             Highlight_sysVar();
 
         }
+
+        private MatchCollection KeyWordSearch(string file)
+        {
+            string pattern = @"((?<=\s{1,})IF(?=(\s)))|((?<=\s{1,})ELSE(?=(\s)))|((?<=\s{1,})WHILE(?=(\s)))|((?<=\s{1,})FOR(?=(\s)))|
+                                ((?<=\s{1,})INSERT(?=(\s)))|((?<=\s{1,})ON(?=(\s)))|((?<=\s{1,})MERGE(?=(\s)))|((?<=\s{1,})DROP(?=(\s)))|((?<=\s{1,})JOIN(?=(\s)))|((?<=\s{1,})LEFT(?=(\s)))|
+                                ((?<=\s{1,})RIGHT(?=(\s)))|((?<=\s{1,})INNER(?=(\s)))|((?<=\s{1,})UPDATE(?=(\s)))|((?<=\s{1,})DELETE(?=(\s)))|((?<=\s{1,})BEGIN(?=(\s)))|((?<=\s{1,})END(?=(\s|;)))|
+                                ((?<=\s{1,})TRANSACTION(?=(\s)))|((?<=\s{1,})COMMIT(?=(\s)))|((?<=\s{1,})GO(?=(\s|;)))|((?<=\s{1,})USE(?=(\s)))|((?<=\s{1,})EXECUTE(?=(\s)))|((?<=\s{1,})GOTO(?=(\s)))|
+                                ((?<=\s{1,})EXEC(?=(\s)))|((?<=\s{1,})ROLLBACK(?=(\s)))|((?<=\s{1,})DECLARE(?=(\s)))|((?<=\s{1,})FROM(?=(\s)))|((?<=\s{1,})SELECT(?=(\s)))|((?<=\s{1,})WHERE(?=(\s)))|
+                                ((?<=\s{1,})GROUP BY(?=(\s)))|((?<=\s{1,})ORDER BY(?=(\s)))|((?<=\s{1,})TOP(?=(\s)))|((?<=\s{1,})HAVING(?=(\s)))|((?<=\s{1,})@{2}\w+(?=(\s|;)))";
+            Regex rx = new Regex(pattern, RegexOptions.IgnoreCase);
+            return rx.Matches(file);
+        }
+
         private void Highlight_sysVar()
         {
-            string pattern = @"DECLARE|FROM|SELECT|WHERE|GROUP BY|ORDER BY|TOP|HAVING|@{2}\w+";
-            Regex rx = new Regex(pattern, RegexOptions.IgnoreCase);
-            MatchCollection mc = rx.Matches(file);
+            MatchCollection mc = KeyWordSearch(file);
             foreach(Match m in mc)
             {
                 for (TextPointer position = rtb.Document.ContentStart;

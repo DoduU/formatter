@@ -37,8 +37,11 @@ namespace CodeFormatter
                 }
             }
             return script;
-
-
         }
+
+        /*public string To_New_Line(string needNewLine)
+        {
+            needNewLine.L
+        }*/
     }
 }
