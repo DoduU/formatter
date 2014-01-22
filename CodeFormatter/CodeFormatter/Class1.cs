@@ -39,9 +39,19 @@ namespace CodeFormatter
             return script;
         }
 
-        /*public string To_New_Line(string needNewLine)
+        private string To_New_Line(string needNewLine)
         {
-            needNewLine.L
-        }*/
+            return System.Environment.NewLine + needNewLine;
+        }
+        private string Pad_Generator(int padNum)
+        {
+            string padStr = " ";
+            for (int i = 0; i < padNum; i++)
+            {
+                padStr = padStr + " ";
+            }
+            return padStr;
+        }
+
     }
 }
