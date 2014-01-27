@@ -28,6 +28,16 @@ namespace WpfApplication1
             InitializeComponent();
         }
 
+        new struct Tag
+        {
+            public TextPointer StartPosition;
+            public TextPointer EndPosition;
+            public string Word;
+            
+        }
+
+        List<Tag> m_tags = new List<Tag>();
+
         string curFile;
         string file;
 
@@ -45,45 +55,76 @@ namespace WpfApplication1
         }
         private void Highlight_sysVar()
         {
-            string pattern = @"is";
-            int cnt = 1;
+            if (rtb.Document == null)
+                return;
 
-            Regex rx = new Regex(pattern, RegexOptions.IgnoreCase);
-            MatchCollection mc = rx.Matches(file);
-            foreach (Match m in mc)
+            TextRange documentRange = new TextRange(rtb.Document.ContentStart, rtb.Document.ContentEnd);
+            documentRange.ClearAllProperties();
+
+            TextPointer navigator = rtb.Document.ContentStart;
+            while (navigator.CompareTo(rtb.Document.ContentEnd) < 0)
             {
-                TextPointer start = rtb.Document.ContentStart;
+                TextPointerContext context = navigator.GetPointerContext(LogicalDirection.Backward);
+                if (context == TextPointerContext.ElementStart && navigator.Parent is Run)
+                {
+                    CheckWordsInRun((Run)navigator.Parent);
 
-                    TextPointer startPos = start.GetPositionAtOffset(file.IndexOf(m.Value) + 8);
-
-                    TextPointer next = start.GetPositionAtOffset(file.IndexOf(m.Value) + 8 + m.Value.Length);
-                    String textRun = startPos.GetTextInRun(LogicalDirection.Forward);
-                    rtb.AppendText(System.Environment.NewLine);
-                    rtb.AppendText(startPos.GetTextRunLength(LogicalDirection.Forward).ToString());
-                    rtb.AppendText(System.Environment.NewLine);
-                    rtb.AppendText(startPos.GetTextRunLength(LogicalDirection.Backward).ToString());
-                    rtb.AppendText(System.Environment.NewLine);
-                    rtb.AppendText(textRun);
-                    TextRange tr = new TextRange(startPos, next);
-                    Color_Format_keyWord(tr, cnt);
-                   
-
+                }
+                navigator = navigator.GetNextContextPosition(LogicalDirection.Forward);
             }
 
-
+            Format();
         }
-        private void Color_Format_keyWord(TextRange got, int cnt)
+
+        void Format()
         {
-            if (cnt == 1)
+            for (int i = 0; i < m_tags.Count; i++)
             {
-                got.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Blue);
-                got.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Bold);
+                TextRange range = new TextRange(m_tags[i].StartPosition, m_tags[i].EndPosition);
+                range.ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.Blue));
+                range.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Bold);
             }
-            else 
+            m_tags.Clear();
+        }
+
+        void CheckWordsInRun(Run run)
+        {
+            string text = run.Text;
+
+            int sIndex = 0;
+            int eIndex = 0;
+            for (int i = 0; i < text.Length; i++)
             {
-                got.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.OrangeRed);
-                got.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Bold);
+                if (Char.IsWhiteSpace(text[i]) | JSSyntaxProvider.GetSpecials.Contains(text[i]))
+                {
+                    if (i > 0 && !(Char.IsWhiteSpace(text[i - 1]) | JSSyntaxProvider.GetSpecials.Contains(text[i - 1])))
+                    {
+                        eIndex = i - 1;
+                        string word = text.Substring(sIndex, eIndex - sIndex + 1);
+
+                        if (JSSyntaxProvider.IsKnownTag(word))
+                        {
+                            Tag t = new Tag();
+                            t.StartPosition = run.ContentStart.GetPositionAtOffset(sIndex, LogicalDirection.Forward);
+                            t.EndPosition = run.ContentStart.GetPositionAtOffset(eIndex + 1, LogicalDirection.Backward);
+                            t.Word = word;
+                            m_tags.Add(t);
+                        }
+                    }
+                    sIndex = i + 1;
+                }
+            }
+
+            string lastWord = text.Substring(sIndex, text.Length - sIndex);
+            if (JSSyntaxProvider.IsKnownTag(lastWord))
+            {
+                Tag t = new Tag();
+                t.StartPosition = run.ContentStart.GetPositionAtOffset(sIndex, LogicalDirection.Forward);
+                t.EndPosition = run.ContentStart.GetPositionAtOffset(eIndex + 1, LogicalDirection.Backward);
+                t.Word = lastWord;
+                m_tags.Add(t);
             }
         }
+
     }
 }
