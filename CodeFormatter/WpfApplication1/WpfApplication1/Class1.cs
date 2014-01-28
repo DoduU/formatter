@@ -203,15 +203,13 @@ namespace WpfApplication1
             tags = new List<string>(strs);
 
             char[] chrs = {
-                '.',
+                ';',
                 ')',
                 '(',
                 '[',
                 ']',
                 '>',
                 '<',
-                ':',
-                ';',
                 '\n',
                 '\t'
             };

@@ -1,4 +1,5 @@
-/*** CONFIGURABLE VARIABLES ***/
+/*** CONFIGURABLE 
+VARIABLES ***/
 /*** StreamAndModuleAttributesVariables ***/
 dsdsadasdadasd_daasda:
 DECLARE @StreamDetailID	   int = 681;						  -- The ID of the stream which should be loaded into CFGETL schema
