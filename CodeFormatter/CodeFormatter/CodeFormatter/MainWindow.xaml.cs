@@ -160,5 +160,21 @@ namespace CodeFormatter
         }
 
 
+
+        private void ExitClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void FormatPropertiesClick(object sender, RoutedEventArgs e)
+        {
+            Window1 win = new Window1();
+            win.Title = "Formatting properties";
+            win.Show();
+            win.Do();
+            
+        }
+
+
     }
 }

@@ -70,7 +70,7 @@ namespace CodeFormatter
                         GetAllKeyWords(m_tags, word, sIndex, eIndex, run);
                         GetAllLabels(labels, word, sIndex, eIndex, run);
                         GetAllSysVariables(sysVariables, word, sIndex, eIndex, run);
-                        GetTextVariables(strVar,isVariable, word, sIndex, eIndex, run);
+                       // GetTextVariables(strVar,ref isVariable, word, sIndex, eIndex, run);
                     }
                     sIndex = i + 1;
                 }
@@ -83,7 +83,7 @@ namespace CodeFormatter
             GetAllKeyWords(m_tags, text, lastWord, sIndex, eIndex, run);
             GetAllLabels(labels, lastWord, sIndex, eIndex, run);
             GetAllSysVariables(sysVariables, lastWord, sIndex, eIndex, run);
-            GetTextVariables(strVar, isVariable, lastWord, sIndex, eIndex, run);
+           // GetTextVariables(strVar, ref isVariable, lastWord, sIndex, eIndex, run);
         }
 
     }

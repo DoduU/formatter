@@ -90,7 +90,11 @@ namespace WpfApplication1
             rtb.AppendText(file);
             //Color_Format_Clauses();
             Highlight_sysVar();
+
+
         }
+
+
         private void Highlight_sysVar()
         {
             if (rtb.Document == null)
@@ -113,6 +117,8 @@ namespace WpfApplication1
 
             Format();
         }
+
+
  /*       private void To_Upper()
         {
             for (int i = 0; i < m_tags.Count; i++)
@@ -183,12 +189,18 @@ namespace WpfApplication1
             sysVariables.Clear();
             m_tags.Clear();
         }
-
+        string TabParameters(Run run)
+        {
+            String text = run.Text;
+            text = text.Replace(",", System.Environment.NewLine + ",");
+            return text;
+        }
         void CheckWordsInRun(Run run)
         {
             Regex reg = new Regex(@"(\w{0,})'\w{0,}'(?!\s|;)");
             string text = run.Text;
             int sIndex = 0;
+            text = TabParameters(run);
             int eIndex = 0;
             for (int i = 0; i < text.Length; i++)
             {
@@ -312,14 +324,14 @@ namespace WpfApplication1
                 }
             }
 
-            string lastWord = text.Substring(sIndex, text.Length - sIndex);
+        string lastWord = text.Substring(sIndex, text.Length - sIndex);
         if(lastWord.Length!=0)
          {
             if (JSSyntaxProvider.IsKnownTag(lastWord))
             {
                 Tag t = new Tag();
-                t.StartPosition = run.ContentStart.GetPositionAtOffset(sIndex, LogicalDirection.Forward);
-                t.EndPosition = run.ContentStart.GetPositionAtOffset(eIndex + lastWord.Length, LogicalDirection.Backward);
+                t.StartPosition = run.ContentStart.GetPositionAtOffset(text.IndexOf(lastWord), LogicalDirection.Forward);
+                t.EndPosition = run.ContentStart.GetPositionAtOffset(text.IndexOf(lastWord) + lastWord.Length, LogicalDirection.Backward);
                 t.Word = lastWord;
                 m_tags.Add(t);
             }

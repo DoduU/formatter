@@ -62,6 +62,7 @@ namespace CodeFormatter
             public string Word;
 
         }
+        Regex reg = new Regex(@"(\w{0,})'\w{0,}'(?!\s|;)");
         #endregion
         #region Get script elements
         #region Get comments
@@ -187,28 +188,31 @@ namespace CodeFormatter
             }
         }
         #region Get all text variables
-        public void GetTextVariables(List<stringVar> strVar,bool isVariable, string word, int sIndex, int eIndex, Run run)
+        public void GetTextVariables(List<stringVar> strVar, ref bool isVariable, string word, int sIndex, int eIndex, Run run)
         {
-            isVariable = IfTextVarStarts(isVariable, word);
-            IfTextVar(strVar, isVariable, word, sIndex, eIndex, run);
-            if (isVariable)
-            {
-                isVariable = IfTextVarEnds(strVar, isVariable, word, sIndex, eIndex, run);
+            bool enter  = false;
+                IfTextVarStarts(ref enter, ref isVariable, word);
 
-            }
-
-
-
+                IfTextVar(strVar, ref isVariable, word, sIndex, eIndex, run);
+                if (reg.Match(word).Success)
+                {
+                    isVariable = false;
+                }
+                if (!enter)
+                {
+                    IfTextVarEnds(strVar, ref isVariable, word, sIndex, eIndex, run);
+                }
         }
-        private bool IfTextVarStarts(bool isVariable, string word)
+        private void IfTextVarStarts(ref bool enter, ref bool isVariable, string word)
         {
             if (word.Contains(@"'") && !isVariable)
             {
-                return true;
-            }
-            return false;
+                isVariable = true;
+                enter = true;
+            }    
+
         }
-        private bool IfTextVarEnds(List<stringVar> strVar, bool isVariable, string word, int sIndex, int eIndex, Run run)
+        private void IfTextVarEnds(List<stringVar> strVar, ref bool isVariable, string word, int sIndex, int eIndex, Run run)
         {
             if (word.Contains(@"'") && isVariable)
             {
@@ -218,11 +222,10 @@ namespace CodeFormatter
                 var.EndPosition = run.ContentStart.GetPositionAtOffset(sIndex + word.Length, LogicalDirection.Backward);
                 var.Word = word;
                 strVar.Add(var);
-                return false;
+                isVariable = false;
             }
-            return true;
         }
-        private void IfTextVar(List<stringVar> strVar,bool isVariable, string word, int sIndex, int eIndex, Run run)
+        private void IfTextVar(List<stringVar> strVar,ref bool isVariable,string word, int sIndex, int eIndex, Run run)
         {
             if (isVariable)
             {

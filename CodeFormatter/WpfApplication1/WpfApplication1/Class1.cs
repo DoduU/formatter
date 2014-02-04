@@ -211,7 +211,8 @@ namespace WpfApplication1
                 '>',
                 '<',
                 '\n',
-                '\t'
+                '\t',
+                (char)13
             };
             specials = new List<char>(chrs);
         }

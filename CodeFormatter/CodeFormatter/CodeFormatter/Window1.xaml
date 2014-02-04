@@ -1,0 +1,38 @@
+﻿<Window x:Name="Formatting_properties" x:Class="CodeFormatter.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Window1" Height="526" Width="639">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Height="476" Margin="10,10,0,0" VerticalAlignment="Top" Width="611">
+            <TabItem Header="General">
+                <Grid>
+                    <Label x:Name="Header" Content="Customize common elements" Margin="0,0,10,414" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="16">
+                        </Label>
+                    <Label Content="Spacing" Margin="0,35,0,375" Background="#FFFBEFEF"></Label>
+                    <CheckBox x:Name="SpacingControl" Margin="0,69,10,345">
+                        <Label Content="Enable spacing formatting" Width="185" Height="30" RenderTransformOrigin="0.5,0.5">
+                        </Label>
+                    </CheckBox>
+                <CheckBox x:Name="Space1" Margin="27,99,10,315">
+                    <Label Content="Add spaces inside parantheses" Width="548"/>
+                </CheckBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Comments">               
+            </TabItem>
+            <TabItem Header="Expressions">                
+            </TabItem>
+            <TabItem Header="Data Statements">                
+            </TabItem>
+            <TabItem Header="Joins">
+            </TabItem>
+            <TabItem Header="Value List">               
+            </TabItem>
+            <TabItem Header="Variables">                
+            </TabItem>
+            <TabItem Header="Programmability">                
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

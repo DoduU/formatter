@@ -11,3 +11,5 @@ D:\CodeFormatter\CodeFormatter\obj\Debug\CodeFormatter.Properties.Resources.reso
 D:\CodeFormatter\CodeFormatter\obj\Debug\CodeFormatter.csproj.GenerateResource.Cache
 D:\CodeFormatter\CodeFormatter\obj\Debug\CodeFormatter.exe
 D:\CodeFormatter\CodeFormatter\obj\Debug\CodeFormatter.pdb
+D:\CodeFormatter\CodeFormatter\obj\Debug\Window1.baml
+D:\CodeFormatter\CodeFormatter\obj\Debug\Window1.g.cs
