@@ -24,15 +24,5 @@ namespace CodeFormatter
             InitializeComponent();
         }
 
-        public void Do()
-        {
-            while (true)
-            {
-                if (!SpacingControl.IsChecked == false)
-                {
-                    Space1.IsEnabled = false;
-                }
-            }
-        }
     }
 }

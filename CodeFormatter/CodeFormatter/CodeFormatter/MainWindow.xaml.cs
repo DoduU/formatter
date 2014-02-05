@@ -170,9 +170,7 @@ namespace CodeFormatter
         {
             Window1 win = new Window1();
             win.Title = "Formatting properties";
-            win.Show();
-            win.Do();
-            
+            win.Show();           
         }
 
 
