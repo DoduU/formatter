@@ -1,31 +1,45 @@
 ﻿<Window x:Class="CodeFormatter.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid Margin="0,0,291,0">
+        Title="Code formatter" Height="578" Width="802">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" HorizontalAlignment="Left">
+            <MenuItem Header="_File">
+                <Separator/>
+                <MenuItem Header=" _Open " Click="btn_Click">                    
+                </MenuItem>
+                <MenuItem Header=" _Exit" Click="ExitClick">
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Format Properties" Click="FormatPropertiesClick">
+            </MenuItem>
+        </Menu>
+        <Grid Margin="0,0,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="0*"/>
             <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Button x:Name="btn" Content="Btn" HorizontalAlignment="Left" Margin="361,288,0,0" VerticalAlignment="Top" Width="75" Click="btn_Click" Grid.Row="1" Height="22" RenderTransformOrigin="0.573,4.409"/>
-        <RichTextBox x:Name="rtb" HorizontalAlignment="Left" Height="300" Margin="10,10,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="206" VerticalScrollBarVisibility="Auto" IsReadOnly="True" IsReadOnlyCaretVisible="True">
-            <RichTextBox.BindingGroup>
+                <RowDefinition Height="0*"/>
+            </Grid.RowDefinitions>
+            <RichTextBox x:Name="rtb" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.RowSpan="2" VerticalAlignment="Top" IsReadOnlyCaretVisible="True" IsHitTestVisible="True" BorderThickness="0" Width="774" AcceptsTab="True">
+                <RichTextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.066"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.185"/>
+                        <GradientStop Color="#FFE3E9EF" Offset="1"/>
+                    </LinearGradientBrush>
+                </RichTextBox.BorderBrush>
+                <RichTextBox.BindingGroup>
                 <BindingGroup/>
             </RichTextBox.BindingGroup>
-            <FlowDocument>
-                <Paragraph>
-                    <Run Text="RichTextBox"/>
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="438,132,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Foreground="#FF168D21"/>
-        <Button x:Name="btn_apply" Content="apply" HorizontalAlignment="Left" Margin="257,288,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="75" Click="btn_apply_click"/>
-        <Grid HorizontalAlignment="Left" Height="222" Margin="10,10,0,0" VerticalAlignment="Top" Width="210" Grid.Row="1"/>
-        <TabControl HorizontalAlignment="Left" Height="300" Margin="280,10,-268,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="214">
-            <TabItem Header="TabItem" Margin="0,0,-4,-3"/>
-            <RadioButton Content="RadioButton" Height="100" Width="100" Margin="10,26,99,116"/>
-            <Menu Height="100" Width="100" Margin="34,70,75,73"/>
-        </TabControl>
-        <Grid HorizontalAlignment="Left" Height="321" Margin="257,-1,-295,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="264"/>
-    </Grid>
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text=""/>
+                        <InlineUIContainer>
+                            <WrapPanel Height="504" Width="684"/>
+                        </InlineUIContainer>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+        </Grid>
+    </DockPanel>
 </Window>

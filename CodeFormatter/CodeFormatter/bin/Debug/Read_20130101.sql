@@ -1,5 +1,4 @@
-/*** CONFIGURABLE VARIABLES ***/
-/*** StreamAndModuleAttributesVariables ***/
+dsdsadasdadasd_daasda:
 DECLARE @StreamDetailID	   int = 681;						  -- The ID of the stream which should be loaded into CFGETL schema
 DECLARE @ModuleDetailID	   int = 681;						  -- The ID of current stream module 
 DECLARE @boolOnlyRowsCont  nvarchar( 1 ) = N'0';		  -- A value controls truncate and validation procedures																			
@@ -35,6 +34,7 @@ DECLARE tableNames		  CURSOR
 
 /*** ModuleDetailVariables ***/
 DECLARE @packageName nvarchar( 100 ) = N'';
+
 
 /*** StreamDetail Variables ***/
 DECLARE @StreamTypeID			smallint = 2;
