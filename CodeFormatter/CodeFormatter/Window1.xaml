@@ -1,10 +1,39 @@
 ﻿<Window x:Name="Formatting_properties" x:Class="CodeFormatter.Window1"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Window1" Height="686" Width="639">
+        Title="Window1" Height="876" Width="639" ResizeMode="NoResize">
     <Window.Resources>
         <Style x:Key="checksome" TargetType="CheckBox">
             <Setter Property="IsChecked" Value="True"/>
+        </Style>
+        <Style x:Key="TabHeader" TargetType="Label">  
+            <Setter Property="Height" Value="30">                
+            </Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center">
+            </Setter>
+            <Setter Property="Width" Value="570"> </Setter>
+            <Setter Property="FontFamily" Value="Times New Roman"> </Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        </Style>
+        <Style x:Key="Paragraph" TargetType="Label">
+            <Setter Property="Height" Value="40"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="FontSize" Value="12"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center">
+            </Setter>
+            <Setter Property="Width" Value="570"></Setter>
+            <Setter Property="Background" Value="#FFFBEFEF"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Left"></Setter>
+        </Style>
+        <Style x:Key="Checkbox" TargetType="CheckBox">
+            <Setter Property="Height" Value="30">
+            </Setter>
+            <Setter Property="FontSize" Value="12"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center">
+            </Setter>
+            <Setter Property="Width" Value="570"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Left"></Setter>
         </Style>
     </Window.Resources>
         <Grid>
@@ -12,159 +41,155 @@
             <RowDefinition Height="495*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TabControl HorizontalAlignment="Left" Margin="10,10,0,10" Width="601">
+        <TabControl HorizontalAlignment="Left" Margin="10,10,0,53" Width="613">
             <TabItem Header="General">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Label x:Name="Header" Content="Customize common elements" Margin="193,0,209,568" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="16">
-                        </Label>
-                    <Label Content="Spacing" Margin="0,40,10,534" Background="#FFFBEFEF"></Label>
-                    <CheckBox Style="{StaticResource checksome}" x:Name="SpacingControl" Margin="0,69,10,504" Checked="SpacingControlChecked" Unchecked="SpacingControlUnckecked">
+                    <Label x:Name="Header" Content="Customize common elements" Margin="23,10,10,711" Style ="{StaticResource TabHeader}"/>
+                    <Label Content="Spacing" Margin="23,45,10,666" Style ="{StaticResource Paragraph}"></Label>
+                    <CheckBox Style="{StaticResource Checkbox}" IsChecked="True" x:Name="SpacingControl" Margin="23,90,10,617" Checked="SpacingControlChecked" Unchecked="SpacingControlUnckecked">
                         <Label Content="Enable spacing formatting" Width="185" Height="30" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
-                <CheckBox x:Name="Space1" Margin="27,104,10,469">
+                    <CheckBox x:Name="Space1" Margin="48,132,10,589" Style="{StaticResource Checkbox}" Width="545">
                     <Label Content="Add spaces inside parantheses" Width="506"/>
                 </CheckBox>
-                    <CheckBox x:Name="Space2" Margin="27,139,10,434" >
+                    <CheckBox x:Name="Space2" Margin="48,167,10,554" Style="{StaticResource Checkbox}" Width="545" >
                         <Label Content="Add spaces outside parantheses" Width="517" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
-                    <CheckBox x:Name="Space3" Margin="27,174,10,399" >
+                    <CheckBox x:Name="Space3" Margin="48,237,10,484" Style="{StaticResource Checkbox}" Width="545">
                         <Label Content="Add spaces before commas" Width="517" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
-                    <CheckBox x:Name="Space4" Margin="27,209,10,364" >
+                    <CheckBox x:Name="Space4" Margin="48,202,10,519" Style="{StaticResource Checkbox}" Width="545">
                         <Label Content="Add spaces after commas" Width="517" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
-                    <CheckBox x:Name="Operator1" Margin="27,333,10,240">
+                    <CheckBox x:Name="Operator1" Margin="48,352,10,369" Style="{StaticResource Checkbox}" Width="545">
                         <Label Content="Add spaces around assignment operators" Width="554" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
-                    <Label Content="Operators" Margin="0,254,10,315" Background="#FFFBEFEF"/>
-                    <CheckBox x:Name="OperatorControl" Margin="0,298,10,275" Height="30" Style="{StaticResource checksome}" Checked="OperatorControlChecked" Unchecked="OperatorControlUnchecked">
-                        <Label Content="Enable operator formatting" Width="185" Height="30" RenderTransformOrigin="0.5,0.5">
+                    <Label Content="Operators" Margin="23,272,10,439" Style ="{StaticResource Paragraph}"/>
+                    <CheckBox x:Name="OperatorControl" Margin="23,317,10,404" Style="{StaticResource Checkbox}" IsChecked="True" Checked="OperatorControlChecked" Unchecked="OperatorControlUnchecked">
+                        <Label Content="Enable operator formatting" Width="571" Height="35" RenderTransformOrigin="0.5,0.5">
                         </Label>
-                    </CheckBox> 
-                    <CheckBox x:Name="Operator2" Margin="27,368,10,204">
+                    </CheckBox>
+                    <CheckBox x:Name="Operator2" Margin="48,387,10,334" Style="{StaticResource Checkbox}" Width="545">
                         <Label Content="Add spaces around arithmetic operators" Width="529" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
-                    <CheckBox x:Name="Operator3" Margin="27,404,10,169">
+                    <CheckBox x:Name="Operator3" Margin="48,422,10,299" Style="{StaticResource Checkbox}" Width="545">
                         <Label Content="Add spaces around arithmetic operators" Width="544" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
-                    <Label Content="Empty Line" Margin="0,444,10,125" Background="#FFFBEFEF"/>
-                    <CheckBox x:Name="EmptyLineControl" Margin="0,483,10,95" Style="{StaticResource checksome}" Unchecked="EmptyLineUnchecked" Checked="EmptyLineChecked" >
+                    <Label Content="Empty Line" Margin="22,457,10,254" Style ="{StaticResource Paragraph}" Width="571"/>
+                    <CheckBox x:Name="EmptyLineControl" Margin="23,502,10,219" Style="{StaticResource Checkbox}" IsChecked="True" Unchecked="EmptyLineUnchecked" Checked="EmptyLineChecked" >
                         <Label Content="Enable empty line formatting" Width="185" Height="30" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
-                    <RadioButton x:Name="empty1" Content="Remove empty line" HorizontalAlignment="Left" Margin="27,513,0,0" VerticalAlignment="Top" Width="554" Height="30"/>
-                    <RadioButton x:Name="empty2" Content="Add empty line before/after comments" HorizontalAlignment="Left" Margin="27,548,0,0" VerticalAlignment="Top" Width="554" Height="30" IsChecked="True"/>
+                    <RadioButton x:Name="empty1" Content="Remove empty line" HorizontalAlignment="Left" Margin="48,572,0,0" VerticalAlignment="Top" Width="545" Height="30"/>
+                    <RadioButton x:Name="empty2" Content="Add empty line before/after comments" HorizontalAlignment="Left" Margin="48,537,0,0" VerticalAlignment="Top" Width="545" Height="30" IsChecked="True"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Comments">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="158*"/>
-                        <ColumnDefinition Width="433*"/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Label x:Name="HeaderCom" Content="Customize comments formatting" Margin="157,0,193,568" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="16" Width="241" Grid.ColumnSpan="2">
-                    </Label>
-                    <Label Content="Block comments" Margin="0,35,10,539" Background="#FFFBEFEF" Grid.ColumnSpan="2"></Label>
-                    <CheckBox x:Name="CommentsControl" Margin="0,69,10,504" Style="{StaticResource checksome}" Checked="CommentsControlChecked" Unchecked="CommentsControlUnchecked" Grid.ColumnSpan="2" >
+                    <Label x:Name="HeaderCom" Content="Customize comments formatting" Margin="23,10,10,711" Style ="{StaticResource TabHeader}"/>
+                    <Label Content="Block comments" Margin="23,45,10,666" Style="{StaticResource Paragraph}"/>
+                    <CheckBox x:Name="CommentsControl" Margin="23,90,10,631" Style="{StaticResource Checkbox}" IsChecked="True" Checked="CommentsControlChecked" Unchecked="CommentsControlUnchecked" >
                         <Label Content="Enable block comments formatting" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
-                    <CheckBox x:Name="BlockComment1" Margin="27,99,10,474" Grid.ColumnSpan="2">
+                    <CheckBox x:Name="BlockComment1" Margin="50
+                              ,125,10,596" Style="{StaticResource Checkbox}" Width="544">
                         <Label Content="Insert empty line before block comments" Width="506"/>
                     </CheckBox>
-                    <CheckBox x:Name="BlockComment2" Margin="27,134,10,439" Grid.ColumnSpan="2">
+                    <CheckBox x:Name="BlockComment2" Margin="50,160,10,561" Style="{StaticResource Checkbox}" Width="543">
                         <Label Content="Insert empty line after block comments" Width="506"/>
                     </CheckBox>
-                    <Label Content="Line comments" Margin="0,179,10,395" Background="#FFFBEFEF" Grid.ColumnSpan="2"></Label>
-                    <CheckBox x:Name="LineComment1" Margin="27,243,10,330" Grid.ColumnSpan="2">
+                    <Label Content="Line comments" Margin="23,198,10,513" Style="{StaticResource Paragraph}"/>
+                    <CheckBox x:Name="LineComment1" Margin="50,278,10,443" Style="{StaticResource Checkbox}" Width="543">
                         <Label Content="Move before statement" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
-                    <CheckBox x:Name="LineComment2" Margin="27,278,10,295" Grid.ColumnSpan="2">
+                    <CheckBox x:Name="LineComment2" Margin="50,313,10,408" Style="{StaticResource Checkbox}" Width="543">
                         <Label Content="Move after statement" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
-                    <CheckBox x:Name="LineComment3" Margin="27,313,10,260" Grid.ColumnSpan="2">
+                    <CheckBox x:Name="LineComment3" Margin="50,348,10,373" Style="{StaticResource Checkbox}" Width="543">
                         <Label Content="Insert empty line before line comments" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
-                    <CheckBox x:Name="LineComment4" Margin="27,348,10,225" Grid.ColumnSpan="2">
+                    <CheckBox x:Name="LineComment4" Margin="50,383,10,338" Style="{StaticResource Checkbox}" Width="543">
                         <Label Content="Insert empty line after line comments" Width="554" Height="30" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
-                    <CheckBox x:Name="LineCommentControl" Margin="0,213,10,360" Style="{StaticResource checksome}" Checked="LineCommentChecked" Unchecked="LineCommentUnchecked" Grid.ColumnSpan="2" >
+                    <CheckBox x:Name="LineCommentControl" Margin="23,243,10,478" Style="{StaticResource Checkbox}" IsChecked="True" Checked="LineCommentChecked" Unchecked="LineCommentUnchecked" >
                         <Label Content="Enable line comments formatting" Width="581" Height="30" RenderTransformOrigin="0.5,0.5"/>
                     </CheckBox>
                 </Grid>
             </TabItem>
             <TabItem Header="Expressions">
                 <Grid>
-                    <Label x:Name="HeaderExpr" Content="Customize expressions formatting" Margin="162,0,198,568" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="16" Width="241">
+                    <Label x:Name="HeaderExpr" Content="Customize expressions formatting" Margin="16,10,17,685" Style ="{StaticResource TabHeader}" Height="Auto">
                     </Label>
-                    <Label Content="Logical expressions" Margin="0,35,10,539" Background="#FFFBEFEF"></Label>
-                    <CheckBox x:Name="LogicalExoressionControl" Margin="0,69,10,504" Style="{StaticResource checksome}" Checked="LogExprChecked" Unchecked="LogExrpUnchecked">
+                    <Label Content="Logical expressions" Margin="23,50,10,661" Style="{StaticResource Paragraph}"></Label>
+                    <CheckBox x:Name="LogicalExoressionControl" Margin="23,95,10,626" Style="{StaticResource Checkbox}" IsChecked="True" Checked="LogExprChecked" Unchecked="LogExrpUnchecked">
                         <Label Content="Enable logical expression formatting" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
-                    <CheckBox x:Name="LogicalExpression" Margin="27,104,10,469" Checked="LogicalExprChecked" Unchecked="LogicalExprUnchecked" IsChecked="True">
-                        <Label Content="Opreations on multiple lines" Width="554" Height="30" RenderTransformOrigin="0.5,0.5">
+                    <CheckBox x:Name="LogicalExpression" Margin="77,130,10,591" Style="{StaticResource Checkbox}" Checked="LogicalExprChecked" Unchecked="LogicalExprUnchecked" IsChecked="True" Width="516">
+                        <Label Content="Opreations on multiple lines" Width="480" Height="30" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
-                    <RadioButton x:Name="expradio1" Content="Place operator before operand" Margin="52,139,10,434" Height="30" IsChecked="True"></RadioButton>
-                    <RadioButton x:Name="expradio2" Content="Place operator after operand" Margin="52,169,10,404" Height="30" ></RadioButton>
-                    <RadioButton x:Name="expradio3" Content="Place operator on separate line" Margin="52,199,10,374" Height="30" ></RadioButton>
+                    <Grid>
+                    <RadioButton x:Name="expradio1" Content="Place operator before operand" Margin="100,165,10,556" Height="30" IsChecked="True"></RadioButton>
+                    <RadioButton x:Name="expradio2" Content="Place operator after operand" Margin="100,200,10,521" Height="30" ></RadioButton>
+                    <RadioButton x:Name="expradio3" Content="Place operator on separate line" Margin="100,235,10,486" Height="30" ></RadioButton>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="Data Statements">
                 <Grid>
-                    <Label x:Name="HeaderDS" Content="Customize data statements formatting" Margin="136,0,166,568" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="16" Width="299">
+                    <Label x:Name="HeaderDS" Content="Customize data statements formatting" Margin="23,10,10,699" Style ="{StaticResource TabHeader}" Height="Auto">
                     </Label>
-                    <Label Content="Column list" Margin="0,35,10,539" Background="#FFFBEFEF"></Label>
-                    <CheckBox x:Name="ColunbListControl" Margin="0,69,10,504" Style="{StaticResource checksome}" Checked="ColumnListChecked" Unchecked="ColumnListUnchecked">
-                        <Label Content="Enable column list formatting" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
-                        </Label>
-                    </CheckBox>
-                    <CheckBox x:Name="ColumnList1" Margin="27,104,10,469">
-                        <Label Content="Place column list on new line" Width="554" Height="30" RenderTransformOrigin="0.5,0.5">
-                        </Label>
-                    </CheckBox>
-                    <CheckBox x:Name="ColumnList2" Margin="27,139,10,434" Checked="ColList2Checked" Unchecked="ColList2Unchecked" IsChecked="True">
-                        <Label Content="Place each column on new line" Width="554" Height="30" RenderTransformOrigin="0.5,0.5">
+                    <Label Content="Column list" Margin="25,57,8,654" Style="{StaticResource Paragraph}"></Label>
+                    <CheckBox x:Name="ColunbListControl" Margin="23,102,10,619" Style="{StaticResource Checkbox}" IsChecked="True" Checked="ColumnListChecked" Unchecked="ColumnListUnchecked">
+                    <Label Content="Enable column list formatting" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
                     <Grid>
-                    <RadioButton x:Name="clradio1" Content="Place comma after column name" Margin="52,174,10,399" Height="30" ></RadioButton>
-                    <RadioButton x:Name="clradio2" Content="Place comma before column name" Margin="52,209,10,364" Height="30" IsChecked="True" ></RadioButton>
-                    <RadioButton x:Name="clradio3" Content="Do not indent comma" Margin="52,244,10,329" Height="30" ></RadioButton>
+                        <RadioButton x:Name="dsradio1" Content="Align with keywords" Margin="82,422,10,299" Height="30" IsChecked="True" ></RadioButton>
+                        <RadioButton x:Name="dsradio2" Content="Indent" Margin="83,457,454,264" Height="30" >
+                        </RadioButton>
+                        <TextBox x:Name="AlignDS" HorizontalAlignment="Left" Height="23" Margin="138,454,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="17" Text="2"/>
+                        <Label x:Name="Postfix1" Content="spaces" Height="30" RenderTransformOrigin="0.5,0.5" Margin="160,452,373,269"/>
                     </Grid>
-                    <Label Content="Data statements" Margin="0,279,10,295" Background="#FFFBEFEF"></Label>
-                    <CheckBox x:Name="DataStatementsControl" Margin="0,313,10,260" Style="{StaticResource checksome}" Checked="DataStatementsChecked" Unchecked="DataStatementsUnchecked">
-                        <Label Content="Enable data statements formatting" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
-                        </Label>
-                    </CheckBox>
-                    <CheckBox x:Name="DataStatements1" Margin="27,343,10,230" IsChecked="True" Checked="KeywordChecked" Unchecked="KeywordUnchecked" >
-                        <Label Content="Keyword to new line" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
-                        </Label>
-                    </CheckBox>
                     <Grid>
-                    <RadioButton x:Name="dsradio1" Content="Align with keywords" Margin="52,378,10,195" Height="30" IsChecked="True" ></RadioButton>
-                    <RadioButton x:Name="dsradio2" Content="Indent" Margin="52,413,485,160" Height="30" >   
-                    </RadioButton>
-                    <TextBox x:Name="AlignDS" HorizontalAlignment="Left" Height="23" Margin="111,410,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="17" Text="2"/>
-                    <Label x:Name="Postfix1" Content="spaces" Height="30" RenderTransformOrigin="0.5,0.5" Margin="133,408,400,165"/>
-                    </Grid>
-                    <Label Content="Nested queries" Margin="0,448,10,126" Background="#FFFBEFEF"></Label>
-                    <CheckBox x:Name="NestedQueriesControl" Margin="0,482,10,91" Style="{StaticResource checksome}">
+                        <RadioButton x:Name="clradio1" Content="Place comma after column name" Margin="83,202,10,519" Height="30" />
+                        <RadioButton x:Name="clradio2" Content="Place comma before column name" Margin="82,237,10,484" Height="30" IsChecked="True" />
+                        <RadioButton x:Name="clradio3" Content="Do not indent comma" Margin="83,272,10,449" Height="30" />
+                        </Grid>
+                        <Label Content="Data statements" Margin="23,307,10,404" Style="{StaticResource Paragraph}"/>
+                        <CheckBox x:Name="ColumnList1" Margin="50,167,10,554" Style="{StaticResource Checkbox}" Width="543">
+                            <Label Content="Place column list on new line" Width="554" Height="30" RenderTransformOrigin="0.5,0.5"/>
+                        </CheckBox>
+                        <CheckBox x:Name="ColumnList2" Margin="50,132,-17,589" Style="{StaticResource Checkbox}" Checked="ColList2Checked" Unchecked="ColList2Unchecked" IsChecked="True">
+                            <Label Content="Place each column on new line" Width="554" Height="30" RenderTransformOrigin="0.5,0.5"/>
+                        </CheckBox>
+                        <CheckBox x:Name="DataStatementsControl" Margin="23,352,10,369" Style="{StaticResource ResourceKey=Checkbox}" IsChecked="True" Checked="DataStatementsChecked" Unchecked="DataStatementsUnchecked">
+                            <Label Content="Enable data statements formatting" Width="581" Height="30" RenderTransformOrigin="0.5,0.5"/>
+                        </CheckBox>
+                        <CheckBox x:Name="DataStatements1" Margin="50,387,10,334" Style="{StaticResource Checkbox}" IsChecked="True" Checked="KeywordChecked" Unchecked="KeywordUnchecked" Width="543" >
+                            <Label Content="Keyword to new line" Width="581" Height="30" RenderTransformOrigin="0.5,0.5"/>
+                        </CheckBox>
+                    <Label Content="Nested queries" Margin="23,517,10,194" Style="{StaticResource Paragraph}"></Label>
+                    <CheckBox x:Name="NestedQueriesControl" Margin="23,562,10,159" Style="{StaticResource Checkbox}" IsChecked="True">
                         <Label Content="Enable nested queries formatting" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
@@ -172,113 +197,114 @@
             </TabItem>
             <TabItem Header="Joins">
                 <Grid>
-                    <Label x:Name="HeaderJ" Content="Customize JOIN formatting" Margin="173,0,119,568" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="16" Width="299">
-                    </Label>
-                    <Label Content="Joins" Margin="0,35,10,539" Background="#FFFBEFEF"></Label>
-                    <CheckBox x:Name="JoinControl" Margin="0,69,10,504" Unchecked="JoinUnchecked" Checked="JoinChecked" IsChecked="True">
-                        <Label Content="Enable JOIN formatting" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
-                        </Label>
-                    </CheckBox>
-                    <CheckBox x:Name="Join1" Margin="27,104,-14,469" Style="{StaticResource checksome}" Checked="Join1Checked" Unchecked="Join1Unchecked">
-                        <Label Content="Place joined object on new line" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
-                        </Label>
-                    </CheckBox>
                     <Grid>
-                    <RadioButton x:Name="jradio1" Content="Place JOIN keyword at end of line" Margin="52,139,10,434" Height="30" ></RadioButton>
-                    <RadioButton x:Name="jradio3" Content="Indent" Margin="52,209,485,364" Height="30" ></RadioButton>
-                    <TextBox x:Name="AlignJ" HorizontalAlignment="Left" Height="23" Margin="111,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="17" Text="2" RenderTransformOrigin="-0.706,0.522"/>
-                    <Label x:Name="space2" Content="spaces" Height="30" RenderTransformOrigin="0.121,0.467" Margin="133,204,400,369"/>
-                    <RadioButton x:Name="jradio2" Content="Place JOIN keyword at start of line" Margin="52,174,10,399" Height="30" IsChecked="True"/>
+                        <RadioButton x:Name="jradio4" Content="Align with JOIN keyword" Margin="75,297,-13,424" Height="30" IsChecked="True"/>
+                        <RadioButton x:Name="jradio5" Content="Indent" Margin="75,332,462,389" Height="30" />
+                        <Label x:Name="space3" Content="spaces" Height="30" RenderTransformOrigin="0.121,0.467" Margin="155,327,378,394"/>
+                        <TextBox x:Name="AlignJ2" HorizontalAlignment="Left" Height="23" Margin="133,329,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="17" Text="2" RenderTransformOrigin="-0.706,0.522"/>
                     </Grid>
-                    <CheckBox x:Name="Join2" Margin="27,244,-14,329" Style="{StaticResource checksome}" Unchecked="OnUnchecked" Checked="OnChecked">
-                        <Label Content="Place ON on new line" Width="581" Height="30" RenderTransformOrigin="0.5,0.5"/>
-                    </CheckBox>
                     <Grid>
-                    <RadioButton x:Name="jradio4" Content="Align with JOIN keyword" Margin="52,279,10,294" Height="30" IsChecked="True"/>
-                    <RadioButton x:Name="jradio5" Content="Indent" Margin="52,314,485,259" Height="30" />
-                    <Label x:Name="space3" Content="spaces" Height="30" RenderTransformOrigin="0.121,0.467" Margin="133,309,400,264"/>
-                    <TextBox x:Name="AlignJ2" HorizontalAlignment="Left" Height="23" Margin="111,311,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="17" Text="2" RenderTransformOrigin="-0.706,0.522"/>
+                        <RadioButton x:Name="jradio1" Content="Place JOIN keyword at end of line" Margin="75,162,10,559" Height="30" />
+                        <RadioButton x:Name="jradio2" Content="Place JOIN keyword at start of line" Margin="75,197,-13,524" Height="30" IsChecked="True"/>
+                        <RadioButton x:Name="jradio3" Content="Indent" Margin="75,232,462,489" Height="30" />
+                        <TextBox x:Name="AlignJ" HorizontalAlignment="Left" Height="23" Margin="133,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="17" Text="2" RenderTransformOrigin="-0.706,0.522"/>
+                        <Label x:Name="space2" Content="spaces" Height="30" RenderTransformOrigin="0.121,0.467" Margin="155,227,378,494"/>
                     </Grid>
+                    <CheckBox x:Name="Join2" Margin="50,262,-19,459" Style="{StaticResource Checkbox}" IsChecked="True" Unchecked="OnUnchecked" Checked="OnChecked">
+                            <Label Content="Place ON on new line" Width="581" Height="30" RenderTransformOrigin="0.5,0.5"/>
+                        </CheckBox>
+                        <CheckBox x:Name="Join1" Margin="50,125,10,596" Style="{StaticResource Checkbox}" IsChecked="True" Checked="Join1Checked" Unchecked="Join1Unchecked" Width="543">
+                            <Label Content="Place joined object on new line" Width="581" Height="30" RenderTransformOrigin="0.5,0.5"/>
+                        </CheckBox>
+                        <CheckBox x:Name="JoinControl" Margin="23,90,10,631" Style="{StaticResource Checkbox}" Unchecked="JoinUnchecked" Checked="JoinChecked" IsChecked="True">
+                            <Label Content="Enable JOIN formatting" Width="581" Height="30" RenderTransformOrigin="0.5,0.5"/>
+                        </CheckBox>
+                        <Label Content="Joins" Margin="23,45,10,666" Style="{StaticResource Paragraph}"/>
+                        <Label x:Name="HeaderJ" Content="Customize JOIN formatting" Margin="23,10,10,711" Style ="{StaticResource TabHeader}"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Value List">
-                <Grid>
-                    <Label x:Name="HeaderVL" Content="Customize value formatting" Margin="173,0,119,568" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="16" Width="299">
-                    </Label>
-                    <Label Content="Values" Margin="0,35,10,539" Background="#FFFBEFEF"></Label>
-                    <CheckBox x:Name="ValueControl" Margin="0,69,10,504" IsChecked="True" Checked="ValueChecked" Unchecked="ValueUnchecked">
-                        <Label Content="Enable value formatting" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
-                        </Label>
-                    </CheckBox>
-                    <CheckBox x:Name="Value1" Margin="27,104,-17,469" IsChecked="True" Checked="PlaceValueChecked" Unchecked="PlaceValueUnchecked">
-                        <Label Content="Place value list on new line" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
-                        </Label>
-                    </CheckBox>
+                <Grid>                        
                     <Grid>
-                    <RadioButton x:Name="valradio1" Content="Align with keyword" Margin="53,174,10,399" Height="30" IsChecked="True" />
-                    <RadioButton x:Name="valradio2" Content="Indent" Margin="53,139,484,434" Height="30" />
-                    <Label x:Name ="space4" Content="spaces" Height="30" RenderTransformOrigin="0.121,0.467" Margin="134,134,399,439"/>
-                    <TextBox x:Name="AlignVa" HorizontalAlignment="Left" Height="23" Margin="112,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="17" Text="2" RenderTransformOrigin="-0.706,0.522"/>
+                        <RadioButton x:Name="valradio3" Content="Place comma after each row" Margin="75,300,10,421" Height="30"  />
+                        <RadioButton x:Name="valradio4" Content="Place comma before each row" Margin="75,265,10,456" Height="30" IsChecked="True" />
                     </Grid>
-                    <CheckBox x:Name="Value2" Margin="27,209,-17,364" IsChecked="True" Checked="PlaceRowChecked" Unchecked="PlaceRowUnchecked">
-                        <Label Content="Place each row on new line" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
-                        </Label>
-                    </CheckBox>
+                    <Label Content="Values" Margin="23,45,10,666" Style ="{StaticResource Paragraph}"/>
+                        <Label x:Name="HeaderVL" Content="Customize value formatting" Margin="23,10,10,711" Style ="{StaticResource TabHeader}"/>
+                        <CheckBox x:Name="ValueControl" Margin="23,90,10,631" Style="{StaticResource Checkbox}" IsChecked="True" Checked="ValueChecked" Unchecked="ValueUnchecked">
+                            <Label Content="Enable value formatting" Width="560" Height="30" RenderTransformOrigin="0.5,0.5"/>
+                        </CheckBox>
+                        <CheckBox x:Name="Value1" Margin="52,125,10,596" Style="{StaticResource Checkbox}" IsChecked="True" Checked="PlaceValueChecked" Unchecked="PlaceValueUnchecked" Width="541">
+                            <Label Content="Place value list on new line" Width="531" Height="30" RenderTransformOrigin="0.5,0.5"/>
+                        </CheckBox>
                     <Grid>
-                    <RadioButton x:Name="valradio3" Content="Place comma after each row" Margin="53,279,10,294" Height="30" IsChecked="True" />
-                    <RadioButton x:Name="valradio4" Content="Place comma before each row" Margin="53,244,10,329" Height="30" />
+                        <TextBox x:Name="AlignVa" HorizontalAlignment="Left" Height="23" Margin="134,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="17" Text="2" RenderTransformOrigin="-0.706,0.522"/>
+                        <RadioButton x:Name="valradio2" Content="Indent" Margin="75,160,462,561" Height="30" />
+                        <Label x:Name ="space4" Content="spaces" Height="30" RenderTransformOrigin="0.121,0.467" Margin="156,155,377,566"/>
+                        <RadioButton x:Name="valradio1" Content="Align with keyword" Margin="75,195,10,526" Height="30" IsChecked="True"/>
                     </Grid>
+                    <CheckBox x:Name="Value2" Margin="52,230,10,491" Style="{StaticResource Checkbox}" IsChecked="True" Checked="PlaceRowChecked" Unchecked="PlaceRowUnchecked" Width="541">
+                            <Label Content="Place each row on new line" Width="581" Height="30" RenderTransformOrigin="0.5,0.5"/>
+                        </CheckBox>
                 </Grid>
             </TabItem>
             <TabItem Header="Variables">
                 <Grid>
-                    <Label x:Name="HeaderVar" Content="Customize variables formatting" Margin="173,0,119,568" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="16" Width="299">
-                    </Label>
-                    <Label Content="Varaibles" Margin="0,35,10,539" Background="#FFFBEFEF"></Label>
-                    <CheckBox x:Name="VariableControl" Margin="0,69,10,504" Style="{StaticResource checksome}" Checked="VariablesChecked" Unchecked="VariablesUnchecked">
-                        <Label Content="Enable variables formatting" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
-                        </Label>
-                    </CheckBox>
-                    <CheckBox x:Name="Variable1" Margin="27,104,-16,469" Style="{StaticResource checksome}" Unchecked="PlaceVarUnchecked" Checked="PlaceVarChecked">
-                        <Label Content="Place each variable on new line" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
-                        </Label>
-                    </CheckBox>
-                    <RadioButton x:Name="varradio1" Content="Place comma after each row" Margin="53,174,10,399" Height="30" IsChecked="True"/>
-                    <RadioButton x:Name="varradio2" Content="Place comma before each row" Margin="53,139,10,434" Height="30" />
+                    <Grid>
+                        <RadioButton x:Name="varradio1" Content="Place comma after each row" Margin="75,195,-17,526" Height="30" IsChecked="True"/>
+                        <RadioButton x:Name="varradio2" Content="Place comma before each row" Margin="75,160,-17,561" Height="30" />
+                    </Grid>
+                    <Label Content="Varaibles" Margin="23,45,10,666" Style="{StaticResource Paragraph}"/>
+                        <Label x:Name="HeaderVar" Content="Customize variables formatting" Margin="23,10,10,711" Style ="{StaticResource TabHeader}"/>
+                        <CheckBox x:Name="VariableControl" Margin="23,90,10,631" Style="{StaticResource Checkbox}" IsChecked="True"  Checked="VariablesChecked" Unchecked="VariablesUnchecked">
+                            <Label Content="Enable variables formatting" Width="560" Height="30" RenderTransformOrigin="0.5,0.5"/>
+                        </CheckBox>
+                        <CheckBox x:Name="Variable1" Margin="50,125,-17,596" Style="{StaticResource Checkbox}" IsChecked="True" Unchecked="PlaceVarUnchecked" Checked="PlaceVarChecked">
+                            <Label Content="Place each variable on new line" Width="560" Height="30" RenderTransformOrigin="0.5,0.5"/>
+                        </CheckBox>
                 </Grid>
             </TabItem>
             <TabItem Header="Programmability">
                 <Grid>
-                    <Label x:Name="HeaderProg" Content="Customize programmability formatting" Margin="173,0,119,568" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="16" Width="299">
+                    <Label x:Name="HeaderProg" Content="Customize programmability formatting" Margin="23,10,10,711" Style ="{StaticResource TabHeader}">
                     </Label>
-                    <Label Content="Conditional keywords" Margin="0,35,10,539" Background="#FFFBEFEF"></Label>
-                    <CheckBox x:Name="ProgControl" Margin="0,69,10,504" Style="{StaticResource checksome}" Checked="CondKeywordsChecked" Unchecked="CondKeywordsUnchecked">
+                    <Label Content="Conditional keywords" Margin="23,45,10,666" Style="{StaticResource Paragraph}"></Label>
+                    <CheckBox x:Name="ProgControl" Margin="23,90,10,631" Style="{StaticResource Checkbox}" IsChecked="True" Checked="CondKeywordsChecked" Unchecked="CondKeywordsUnchecked">
                         <Label Content="Enable conditional keywords formatting" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
-                    <CheckBox x:Name="Prog1" Margin="27,104,-16,469" Style="{StaticResource checksome}" Checked="PlaceCondChecked" Unchecked="PlaceCondUnchecked">
-                        <Label Content="Place conditioal keywords on new line" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
+                    <CheckBox x:Name="Prog1" Margin="52,120,10,601" Style="{StaticResource Checkbox}" IsChecked="True" Checked="PlaceCondChecked" Unchecked="PlaceCondUnchecked" Width="541">
+                        <Label Content="Place conditioal keywords on new line" Width="517" Height="30" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
-                    <CheckBox x:Name="progradio2" Content="Indent" Margin="53,139,484,434" Height="30" />
-                    <Label x:Name="space5" Content="spaces" Height="30" RenderTransformOrigin="0.121,0.467" Margin="134,134,399,439"/>
-                    <TextBox x:Name="AlignProg" HorizontalAlignment="Left" Height="23" Margin="112,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="17" Text="2"/>
-                    <Label Content="BEGIN and END" Margin="0,174,10,400" Background="#FFFBEFEF"></Label>
-                    <CheckBox x:Name="ProgControl2" Margin="0,208,10,365" Style="{StaticResource checksome}" Checked="BEChecked" Unchecked="BEUnchecked">
+                    <CheckBox x:Name="progradio2" Content="Indent" Margin="75,155,456,566" Height="30" />
+                    <Label x:Name="space5" Content="spaces" Height="30" RenderTransformOrigin="0.121,0.467" Margin="152,150,381,571"/>
+                    <TextBox x:Name="AlignProg" HorizontalAlignment="Left" Height="23" Margin="130,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="17" Text="2" RenderTransformOrigin="0.353,-0.087"/>
+                    <Label Content="BEGIN and END" Margin="23,190,10,521" Style="{StaticResource Paragraph}"></Label>
+                    <CheckBox x:Name="ProgControl2" Margin="23,235,10,486" Style="{StaticResource Checkbox}" IsChecked="True" Checked="BEChecked" Unchecked="BEUnchecked">
                         <Label Content="Enable BEGIN and END formatting" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
-                    <CheckBox x:Name="Prog2" Margin="27,243,-16,330">
-                        <Label Content="Always use BEGIN and END in IF statements" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
+                    <CheckBox x:Name="Prog2" Margin="52,270,10,451" Style="{StaticResource Checkbox}" Width="541">
+                        <Label Content="Always use BEGIN and END in IF statements" Width="531" Height="30" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
-                    <CheckBox x:Name="Prog3" Margin="27,278,-16,295" Style="{StaticResource checksome}">
-                        <Label Content="Always use BEGIN and END in stared procedures" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
+                    <CheckBox x:Name="Prog3" Margin="52,305,10,416" Style="{StaticResource Checkbox}" IsChecked="True" Width="541">
+                        <Label Content="Always use BEGIN and END in stared procedures" Width="531" Height="30" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
                 </Grid>
             </TabItem>
         </TabControl>
+        <Grid HorizontalAlignment="Left" Height="44" Margin="10,798,0,0" VerticalAlignment="Top" Width="613">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Ok" HorizontalAlignment="Left" Margin="413,11,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button Content="Cancel" HorizontalAlignment="Left" Margin="510,11,0,0" VerticalAlignment="Top" Width="75" Click="ConfigFormCancelClicked"/>
+            <Button Content="Export" HorizontalAlignment="Left" Margin="108,11,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button Content="Import" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Width="75"/>
+        </Grid>
 
     </Grid>
 </Window>

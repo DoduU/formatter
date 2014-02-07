@@ -163,7 +163,7 @@ namespace CodeFormatter
 
         private void ExitClick(object sender, RoutedEventArgs e)
         {
-            Close();
+            this.Close();
         }
 
         private void FormatPropertiesClick(object sender, RoutedEventArgs e)

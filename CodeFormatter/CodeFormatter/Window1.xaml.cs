@@ -549,6 +549,12 @@ namespace CodeFormatter
             Prog3.IsEnabled = false;
         }
 
+        private void ConfigFormCancelClicked(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+
 
     }
         #endregion
