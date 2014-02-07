@@ -99,7 +99,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Label x:Name="HeaderCom" Content="Customize comments formatting" Margin="23,10,10,711" Style ="{StaticResource TabHeader}"/>
+                    <Label x:Name="HeaderCom" Content="Customize comments formatting" Margin="23,10,10,681" Style ="{StaticResource TabHeader}" Height="Auto"/>
                     <Label Content="Block comments" Margin="23,45,10,666" Style="{StaticResource Paragraph}"/>
                     <CheckBox x:Name="CommentsControl" Margin="23,90,10,631" Style="{StaticResource Checkbox}" IsChecked="True" Checked="CommentsControlChecked" Unchecked="CommentsControlUnchecked" >
                         <Label Content="Enable block comments formatting" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
@@ -156,10 +156,10 @@
             </TabItem>
             <TabItem Header="Data Statements">
                 <Grid>
-                    <Label x:Name="HeaderDS" Content="Customize data statements formatting" Margin="23,10,10,699" Style ="{StaticResource TabHeader}" Height="Auto">
+                    <Label x:Name="HeaderDS" Content="Customize data statements formatting" Margin="23,10,10,683" Style ="{StaticResource TabHeader}" Height="Auto">
                     </Label>
-                    <Label Content="Column list" Margin="25,57,8,654" Style="{StaticResource Paragraph}"></Label>
-                    <CheckBox x:Name="ColunbListControl" Margin="23,102,10,619" Style="{StaticResource Checkbox}" IsChecked="True" Checked="ColumnListChecked" Unchecked="ColumnListUnchecked">
+                    <Label Content="Column list" Margin="23,44,10,667" Style="{StaticResource Paragraph}"></Label>
+                    <CheckBox x:Name="ColunbListControl" Margin="23,89,10,632" Style="{StaticResource Checkbox}" IsChecked="True" Checked="ColumnListChecked" Unchecked="ColumnListUnchecked">
                     <Label Content="Enable column list formatting" Width="581" Height="30" RenderTransformOrigin="0.5,0.5">
                         </Label>
                     </CheckBox>
@@ -176,10 +176,10 @@
                         <RadioButton x:Name="clradio3" Content="Do not indent comma" Margin="83,272,10,449" Height="30" />
                         </Grid>
                         <Label Content="Data statements" Margin="23,307,10,404" Style="{StaticResource Paragraph}"/>
-                        <CheckBox x:Name="ColumnList1" Margin="50,167,10,554" Style="{StaticResource Checkbox}" Width="543">
+                        <CheckBox x:Name="ColumnList1" Margin="50,159,10,562" Style="{StaticResource Checkbox}" Width="543">
                             <Label Content="Place column list on new line" Width="554" Height="30" RenderTransformOrigin="0.5,0.5"/>
                         </CheckBox>
-                        <CheckBox x:Name="ColumnList2" Margin="50,132,-17,589" Style="{StaticResource Checkbox}" Checked="ColList2Checked" Unchecked="ColList2Unchecked" IsChecked="True">
+                        <CheckBox x:Name="ColumnList2" Margin="50,124,-17,597" Style="{StaticResource Checkbox}" Checked="ColList2Checked" Unchecked="ColList2Unchecked" IsChecked="True">
                             <Label Content="Place each column on new line" Width="554" Height="30" RenderTransformOrigin="0.5,0.5"/>
                         </CheckBox>
                         <CheckBox x:Name="DataStatementsControl" Margin="23,352,10,369" Style="{StaticResource ResourceKey=Checkbox}" IsChecked="True" Checked="DataStatementsChecked" Unchecked="DataStatementsUnchecked">
@@ -220,7 +220,7 @@
                             <Label Content="Enable JOIN formatting" Width="581" Height="30" RenderTransformOrigin="0.5,0.5"/>
                         </CheckBox>
                         <Label Content="Joins" Margin="23,45,10,666" Style="{StaticResource Paragraph}"/>
-                        <Label x:Name="HeaderJ" Content="Customize JOIN formatting" Margin="23,10,10,711" Style ="{StaticResource TabHeader}"/>
+                        <Label x:Name="HeaderJ" Content="Customize JOIN formatting" Margin="23,10,10,687" Style ="{StaticResource TabHeader}" Height="Auto"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Value List">
@@ -230,7 +230,7 @@
                         <RadioButton x:Name="valradio4" Content="Place comma before each row" Margin="75,265,10,456" Height="30" IsChecked="True" />
                     </Grid>
                     <Label Content="Values" Margin="23,45,10,666" Style ="{StaticResource Paragraph}"/>
-                        <Label x:Name="HeaderVL" Content="Customize value formatting" Margin="23,10,10,711" Style ="{StaticResource TabHeader}"/>
+                        <Label x:Name="HeaderVL" Content="Customize value formatting" Margin="23,10,10,693" Style ="{StaticResource TabHeader}" Height="Auto"/>
                         <CheckBox x:Name="ValueControl" Margin="23,90,10,631" Style="{StaticResource Checkbox}" IsChecked="True" Checked="ValueChecked" Unchecked="ValueUnchecked">
                             <Label Content="Enable value formatting" Width="560" Height="30" RenderTransformOrigin="0.5,0.5"/>
                         </CheckBox>
@@ -255,7 +255,7 @@
                         <RadioButton x:Name="varradio2" Content="Place comma before each row" Margin="75,160,-17,561" Height="30" />
                     </Grid>
                     <Label Content="Varaibles" Margin="23,45,10,666" Style="{StaticResource Paragraph}"/>
-                        <Label x:Name="HeaderVar" Content="Customize variables formatting" Margin="23,10,10,711" Style ="{StaticResource TabHeader}"/>
+                        <Label x:Name="HeaderVar" Content="Customize variables formatting" Margin="23,10,10,689" Style ="{StaticResource TabHeader}" Height="Auto"/>
                         <CheckBox x:Name="VariableControl" Margin="23,90,10,631" Style="{StaticResource Checkbox}" IsChecked="True"  Checked="VariablesChecked" Unchecked="VariablesUnchecked">
                             <Label Content="Enable variables formatting" Width="560" Height="30" RenderTransformOrigin="0.5,0.5"/>
                         </CheckBox>
@@ -266,7 +266,7 @@
             </TabItem>
             <TabItem Header="Programmability">
                 <Grid>
-                    <Label x:Name="HeaderProg" Content="Customize programmability formatting" Margin="23,10,10,711" Style ="{StaticResource TabHeader}">
+                    <Label x:Name="HeaderProg" Content="Customize programmability formatting" Margin="23,10,10,693" Style ="{StaticResource TabHeader}" Height="Auto">
                     </Label>
                     <Label Content="Conditional keywords" Margin="23,45,10,666" Style="{StaticResource Paragraph}"></Label>
                     <CheckBox x:Name="ProgControl" Margin="23,90,10,631" Style="{StaticResource Checkbox}" IsChecked="True" Checked="CondKeywordsChecked" Unchecked="CondKeywordsUnchecked">
